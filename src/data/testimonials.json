@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "Fatima Al-Thani",
+    "location": "Doha, Qatar",
+    "text": "The craftsmanship is extraordinary. Every stitch speaks of quality and the attention to detail is unlike anything I've found elsewhere. My Midnight Silk Abaya is my most treasured piece.",
+    "rating": 5
+  },
+  {
+    "id": 2,
+    "name": "Noura Al-Suwaidi",
+    "location": "Abu Dhabi, UAE",
+    "text": "I ordered the Pearl Embellished Abaya for my daughter's wedding and it was absolutely breathtaking. The pearls caught the light beautifully and I received so many compliments.",
+    "rating": 5
+  },
+  {
+    "id": 3,
+    "name": "Mariam Hassan",
+    "location": "Riyadh, Saudi Arabia",
+    "text": "Finally, a brand that understands modern modest fashion. The designs are contemporary without compromising on modesty. The quality of the fabrics is consistently exceptional.",
+    "rating": 5
+  },
+  {
+    "id": 4,
+    "name": "Aisha Al-Mahmoud",
+    "location": "Kuwait City, Kuwait",
+    "text": "The Everyday Linen Abaya has become my daily go-to. It's so comfortable yet looks polished enough for meetings. I've since purchased three more in different colours.",
+    "rating": 5
+  },
+  {
+    "id": 5,
+    "name": "Hessa Al-Mana",
+    "location": "Doha, Qatar",
+    "text": "The customer service is as premium as the abayas themselves. They helped me find the perfect piece for Eid and even arranged express delivery. Truly a luxury experience from start to finish.",
+    "rating": 5
+  }
+]
