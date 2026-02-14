@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, lazy, Suspense } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, useInView } from 'framer-motion';
@@ -10,9 +10,16 @@ import testimonials from '@/data/testimonials.json';
 import { Product, Testimonial, Collection } from '@/types';
 import { formatPrice } from '@/lib/utils';
 
+const MockupViewer3D = lazy(() =>
+  import('@/components/ui/MockupViewer3D').then((mod) => ({ default: mod.MockupViewer3D }))
+);
+
 function HeroSection() {
+  const [show3D, setShow3D] = useState(false);
+
   return (
-    <section className="relative h-screen min-h-[600px] flex items-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-deep-black">
+      {/* Background image - subtle, darkened */}
       <div className="absolute inset-0">
         <Image
           src="https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?w=1600&q=80"
@@ -20,49 +27,121 @@ function HeroSection() {
           fill
           priority
           sizes="100vw"
-          className="object-cover"
+          className="object-cover opacity-20"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-deep-black/70 via-deep-black/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-deep-black via-deep-black/90 to-deep-black/70" />
       </div>
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="max-w-xl"
-        >
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="text-gold text-sm tracking-[0.3em] uppercase mb-4"
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-24 lg:py-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          {/* Left: Text content */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
           >
-            New Collection 2026
-          </motion.p>
-          <h1 className="font-[family-name:var(--font-playfair)] text-4xl sm:text-5xl lg:text-6xl text-white leading-tight mb-6">
-            Where Tradition
-            <br />
-            Meets <span className="text-gold italic">Elegance</span>
-          </h1>
-          <p className="text-white/70 text-base sm:text-lg mb-8 max-w-md leading-relaxed">
-            Handcrafted abayas from the finest fabrics, designed for the modern woman who honours her heritage.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Link
-              href="/shop"
-              className="inline-block bg-gold text-white px-8 py-3.5 text-sm tracking-widest uppercase hover:bg-gold-light transition-colors duration-300 text-center"
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="text-gold text-sm tracking-[0.3em] uppercase mb-4"
             >
-              Explore Collection
-            </Link>
-            <Link
-              href="/about"
-              className="inline-block border border-white/40 text-white px-8 py-3.5 text-sm tracking-widest uppercase hover:bg-white/10 transition-colors duration-300 text-center"
+              New Collection 2026
+            </motion.p>
+            <h1 className="font-[family-name:var(--font-playfair)] text-4xl sm:text-5xl lg:text-6xl text-white leading-tight mb-6">
+              Where Tradition
+              <br />
+              Meets <span className="text-gold italic">Elegance</span>
+            </h1>
+            <p className="text-white/60 text-base sm:text-lg mb-8 max-w-md leading-relaxed">
+              Handcrafted abayas from the finest fabrics, designed for the modern woman who honours her heritage.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+              <Link
+                href="/shop"
+                className="inline-block bg-gold text-white px-8 py-3.5 text-sm tracking-widest uppercase hover:bg-gold-light transition-colors duration-300 text-center"
+              >
+                Explore Collection
+              </Link>
+              <Link
+                href="/about"
+                className="inline-block border border-white/40 text-white px-8 py-3.5 text-sm tracking-widest uppercase hover:bg-white/10 transition-colors duration-300 text-center"
+              >
+                Our Story
+              </Link>
+            </div>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.2 }}
+              className="text-white/30 text-xs tracking-wider hidden lg:block"
             >
-              Our Story
-            </Link>
-          </div>
-        </motion.div>
+              Drag the 3D model to explore &bull; Upload your own design
+            </motion.p>
+          </motion.div>
+
+          {/* Right: 3D Mockup Viewer */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.6 }}
+            className="relative h-[500px] sm:h-[550px] lg:h-[600px]"
+          >
+            {/* Glow effect behind the 3D model */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className="w-64 h-64 bg-gold/10 rounded-full blur-[100px]" />
+            </div>
+
+            {show3D ? (
+              <Suspense fallback={
+                <div className="w-full h-full flex items-center justify-center">
+                  <div className="text-center">
+                    <div className="w-8 h-8 border-2 border-gold/30 border-t-gold rounded-full animate-spin mx-auto mb-3" />
+                    <p className="text-white/40 text-xs tracking-wider">Loading 3D viewer...</p>
+                  </div>
+                </div>
+              }>
+                <MockupViewer3D
+                  defaultImage="https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?w=800&q=80"
+                  showUpload={true}
+                  className="w-full h-full"
+                />
+              </Suspense>
+            ) : (
+              <div className="w-full h-full flex flex-col items-center justify-center">
+                {/* Placeholder silhouette before 3D loads */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.8 }}
+                  className="text-center"
+                >
+                  <div className="relative w-48 h-72 mx-auto mb-6">
+                    <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-white/[0.02] rounded-full" />
+                    <svg viewBox="0 0 200 300" className="w-full h-full text-white/10" fill="currentColor">
+                      <ellipse cx="100" cy="40" rx="25" ry="30" />
+                      <path d="M70 65 Q65 100 60 140 Q55 200 40 280 L160 280 Q145 200 140 140 Q135 100 130 65 Z" />
+                    </svg>
+                  </div>
+                  <button
+                    onClick={() => setShow3D(true)}
+                    className="group bg-gold/90 backdrop-blur-sm text-white px-6 py-3 text-xs tracking-widest uppercase hover:bg-gold transition-colors duration-300 flex items-center gap-2 mx-auto"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="group-hover:rotate-90 transition-transform duration-500">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
+                    </svg>
+                    Launch 3D View
+                  </button>
+                  <p className="text-white/30 text-xs mt-3 tracking-wider">
+                    Interactive 360° mockup viewer
+                  </p>
+                </motion.div>
+              </div>
+            )}
+          </motion.div>
+        </div>
       </div>
+
       {/* Scroll indicator */}
       <motion.div
         animate={{ y: [0, 8, 0] }}
