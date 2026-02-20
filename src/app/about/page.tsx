@@ -27,7 +27,7 @@ export default function AboutPage() {
     <>
       <section className="relative pt-20 sm:pt-24">
         <div className="relative h-[50vh] sm:h-[60vh] overflow-hidden">
-          <Image src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d44?w=1600&q=80" alt="Elegant fabric draped artfully" fill priority sizes="100vw" className="object-cover" />
+          <Image src="/images/products/pearl-embellished-abaya.jpg" alt="Elegant fabric draped artfully" fill priority sizes="100vw" className="object-cover" />
           <div className="absolute inset-0 bg-deep-black/50" />
           <div className="absolute inset-0 flex items-center justify-center">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }} className="text-center text-white">
@@ -43,7 +43,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <Section>
               <div className="relative aspect-[4/5] overflow-hidden">
-                <Image src="https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?w=800&q=80" alt="Founder of Abayasabaya in her atelier" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
+                <Image src="/images/products/midnight-silk-abaya.jpg" alt="Founder of Abayasabaya in her atelier" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
               </div>
             </Section>
             <Section>
@@ -79,9 +79,9 @@ export default function AboutPage() {
           </Section>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
             {[
-              { step: '01', title: 'Sourcing', description: 'We travel the world to find exceptional fabrics. From Italian silk mills to Japanese crepe weavers, each material is hand-selected for its drape, lustre, and longevity.', image: 'https://images.unsplash.com/photo-1581338834647-b0fb40996d21?w=600&q=80' },
-              { step: '02', title: 'Design', description: 'Every collection begins with sketches inspired by Arabian architecture, nature, and the women who wear our pieces. Each design balances beauty with wearability.', image: 'https://images.unsplash.com/photo-1585487000160-6ebcfceb0d44?w=600&q=80' },
-              { step: '03', title: 'Creation', description: 'Our skilled artisans bring each design to life with meticulous hand-stitching, beading, and embroidery. Each abaya takes 40 to 120 hours to complete.', image: 'https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?w=600&q=80' },
+              { step: '01', title: 'Sourcing', description: 'We travel the world to find exceptional fabrics. From Italian silk mills to Japanese crepe weavers, each material is hand-selected for its drape, lustre, and longevity.', image: '/images/products/everyday-linen-abaya.jpg' },
+              { step: '02', title: 'Design', description: 'Every collection begins with sketches inspired by Arabian architecture, nature, and the women who wear our pieces. Each design balances beauty with wearability.', image: '/images/products/golden-hour-kimono-abaya.jpg' },
+              { step: '03', title: 'Creation', description: 'Our skilled artisans bring each design to life with meticulous hand-stitching, beading, and embroidery. Each abaya takes 40 to 120 hours to complete.', image: '/images/products/crystal-lattice-abaya.jpg' },
             ].map((item) => (
               <Section key={item.step}>
                 <div className="relative aspect-[4/3] overflow-hidden bg-ivory mb-6">
@@ -131,7 +131,7 @@ export default function AboutPage() {
             </Section>
             <Section className="order-1 lg:order-2">
               <div className="relative aspect-[4/5] overflow-hidden">
-                <Image src="https://images.unsplash.com/photo-1581338834647-b0fb40996d21?w=800&q=80" alt="Sheikha Al-Mansouri, founder of Abayasabaya" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
+                <Image src="/images/products/desert-rose-abaya.jpg" alt="Sheikha Al-Mansouri, founder of Abayasabaya" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
               </div>
             </Section>
           </div>

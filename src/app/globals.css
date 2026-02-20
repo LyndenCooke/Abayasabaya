@@ -11,8 +11,8 @@
   --color-rose-gold: #B76E79;
   --color-charcoal: #2C2C2C;
   --color-deep-black: #0A0A0A;
-  --font-heading: 'Playfair Display', Georgia, serif;
-  --font-body: 'Inter', system-ui, sans-serif;
+  --font-heading: var(--font-playfair), Georgia, serif;
+  --font-body: var(--font-body-inter), system-ui, sans-serif;
 }
 
 :root {

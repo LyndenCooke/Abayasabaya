@@ -15,14 +15,13 @@ const MockupViewer3D = lazy(() =>
 );
 
 function HeroSection() {
-  const [show3D, setShow3D] = useState(false);
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-deep-black">
       {/* Background image - subtle, darkened */}
       <div className="absolute inset-0">
         <Image
-          src="https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?w=1600&q=80"
+          src="/images/hero-abaya.jpg"
           alt="Elegant woman wearing premium black abaya"
           fill
           priority
@@ -76,7 +75,7 @@ function HeroSection() {
               transition={{ delay: 1.2 }}
               className="text-white/30 text-xs tracking-wider hidden lg:block"
             >
-              Drag the 3D model to explore &bull; Upload your own design
+              Move your mouse to explore &bull; Upload your own design
             </motion.p>
           </motion.div>
 
@@ -92,52 +91,20 @@ function HeroSection() {
               <div className="w-64 h-64 bg-gold/10 rounded-full blur-[100px]" />
             </div>
 
-            {show3D ? (
-              <Suspense fallback={
-                <div className="w-full h-full flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-8 h-8 border-2 border-gold/30 border-t-gold rounded-full animate-spin mx-auto mb-3" />
-                    <p className="text-white/40 text-xs tracking-wider">Loading 3D viewer...</p>
-                  </div>
+            <Suspense fallback={
+              <div className="w-full h-full flex items-center justify-center">
+                <div className="text-center">
+                  <div className="w-8 h-8 border-2 border-gold/30 border-t-gold rounded-full animate-spin mx-auto mb-3" />
+                  <p className="text-white/40 text-xs tracking-wider">Loading 3D viewer...</p>
                 </div>
-              }>
-                <MockupViewer3D
-                  defaultImage="https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?w=800&q=80"
-                  showUpload={true}
-                  className="w-full h-full"
-                />
-              </Suspense>
-            ) : (
-              <div className="w-full h-full flex flex-col items-center justify-center">
-                {/* Placeholder silhouette before 3D loads */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.8 }}
-                  className="text-center"
-                >
-                  <div className="relative w-48 h-72 mx-auto mb-6">
-                    <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-white/[0.02] rounded-full" />
-                    <svg viewBox="0 0 200 300" className="w-full h-full text-white/10" fill="currentColor">
-                      <ellipse cx="100" cy="40" rx="25" ry="30" />
-                      <path d="M70 65 Q65 100 60 140 Q55 200 40 280 L160 280 Q145 200 140 140 Q135 100 130 65 Z" />
-                    </svg>
-                  </div>
-                  <button
-                    onClick={() => setShow3D(true)}
-                    className="group bg-gold/90 backdrop-blur-sm text-white px-6 py-3 text-xs tracking-widest uppercase hover:bg-gold transition-colors duration-300 flex items-center gap-2 mx-auto"
-                  >
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="group-hover:rotate-90 transition-transform duration-500">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
-                    </svg>
-                    Launch 3D View
-                  </button>
-                  <p className="text-white/30 text-xs mt-3 tracking-wider">
-                    Interactive 360° mockup viewer
-                  </p>
-                </motion.div>
               </div>
-            )}
+            }>
+              <MockupViewer3D
+                defaultImage="/images/hero-abaya.jpg"
+                showUpload={true}
+                className="w-full h-full"
+              />
+            </Suspense>
           </motion.div>
         </div>
       </div>
@@ -293,7 +260,7 @@ function CraftsmanshipBanner() {
     <section className="relative py-24 sm:py-32 overflow-hidden" ref={ref}>
       <div className="absolute inset-0">
         <Image
-          src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d44?w=1600&q=80"
+          src="/images/products/pearl-embellished-abaya.jpg"
           alt="Luxury fabric texture"
           fill
           sizes="100vw"
@@ -393,9 +360,8 @@ function TestimonialsSection() {
               <button
                 key={i}
                 onClick={() => setActive(i)}
-                className={`w-2 h-2 rounded-full transition-all ${
-                  i === active ? 'bg-gold w-6' : 'bg-charcoal/20 hover:bg-charcoal/40'
-                }`}
+                className={`w-2 h-2 rounded-full transition-all ${i === active ? 'bg-gold w-6' : 'bg-charcoal/20 hover:bg-charcoal/40'
+                  }`}
                 aria-label={`Show testimonial ${i + 1}`}
               />
             ))}
@@ -410,12 +376,12 @@ function InstagramSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const images = [
-    'https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?w=400&q=80',
-    'https://images.unsplash.com/photo-1581338834647-b0fb40996d21?w=400&q=80',
-    'https://images.unsplash.com/photo-1585487000160-6ebcfceb0d44?w=400&q=80',
-    'https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?w=400&q=80',
-    'https://images.unsplash.com/photo-1581338834647-b0fb40996d21?w=400&q=80',
-    'https://images.unsplash.com/photo-1585487000160-6ebcfceb0d44?w=400&q=80',
+    '/images/products/midnight-silk-abaya.jpg',
+    '/images/products/pearl-embellished-abaya.jpg',
+    '/images/products/golden-hour-kimono-abaya.jpg',
+    '/images/products/desert-rose-abaya.jpg',
+    '/images/products/crystal-lattice-abaya.jpg',
+    '/images/products/royal-velvet-abaya.jpg',
   ];
 
   return (

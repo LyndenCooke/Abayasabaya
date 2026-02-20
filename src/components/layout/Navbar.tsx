@@ -26,18 +26,13 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    setIsMobileMenuOpen(false);
-  }, [pathname]);
-
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled
-            ? 'bg-cream/95 backdrop-blur-md shadow-sm'
-            : 'bg-transparent'
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
+          ? 'bg-cream/95 backdrop-blur-md shadow-sm'
+          : 'bg-transparent'
+          }`}
         role="navigation"
         aria-label="Main navigation"
       >
@@ -52,19 +47,16 @@ export function Navbar() {
             >
               <div className="w-6 h-5 flex flex-col justify-between">
                 <span
-                  className={`block h-0.5 bg-deep-black transition-all duration-300 ${
-                    isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''
-                  }`}
+                  className={`block h-0.5 bg-deep-black transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''
+                    }`}
                 />
                 <span
-                  className={`block h-0.5 bg-deep-black transition-all duration-300 ${
-                    isMobileMenuOpen ? 'opacity-0' : ''
-                  }`}
+                  className={`block h-0.5 bg-deep-black transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''
+                    }`}
                 />
                 <span
-                  className={`block h-0.5 bg-deep-black transition-all duration-300 ${
-                    isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
-                  }`}
+                  className={`block h-0.5 bg-deep-black transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
+                    }`}
                 />
               </div>
             </button>
@@ -75,11 +67,10 @@ export function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-sm tracking-widest uppercase transition-colors duration-300 hover:text-gold ${
-                    pathname === link.href
-                      ? 'text-gold'
-                      : 'text-deep-black'
-                  }`}
+                  className={`text-sm tracking-widest uppercase transition-colors duration-300 hover:text-gold ${pathname === link.href
+                    ? 'text-gold'
+                    : 'text-deep-black'
+                    }`}
                 >
                   {link.label}
                 </Link>
@@ -201,11 +192,11 @@ export function Navbar() {
                     <Link
                       key={link.href}
                       href={link.href}
-                      className={`block py-3 text-lg tracking-wider transition-colors ${
-                        pathname === link.href
-                          ? 'text-gold'
-                          : 'text-deep-black hover:text-gold'
-                      }`}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className={`block py-3 text-lg tracking-wider transition-colors ${pathname === link.href
+                        ? 'text-gold'
+                        : 'text-deep-black hover:text-gold'
+                        }`}
                     >
                       {link.label}
                     </Link>
@@ -214,6 +205,7 @@ export function Navbar() {
                 <div className="mt-8 pt-8 border-t border-gold/20">
                   <Link
                     href="/cart"
+                    onClick={() => setIsMobileMenuOpen(false)}
                     className="flex items-center space-x-3 text-deep-black hover:text-gold transition-colors"
                   >
                     <svg

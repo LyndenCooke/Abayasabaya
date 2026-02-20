@@ -6,16 +6,33 @@
     "price": 1450,
     "description": "A timeless masterpiece crafted from pure mulberry silk. The Midnight Silk Abaya drapes beautifully with a fluid silhouette, featuring delicate hand-stitched gold thread detailing along the cuffs and neckline. Perfect for evening gatherings and special occasions.",
     "category": "Evening",
-    "sizes": ["XS", "S", "M", "L", "XL"],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
     "colors": [
-      { "name": "Black", "hex": "#0A0A0A" },
-      { "name": "Navy", "hex": "#1B2A4A" }
+      {
+        "name": "Black",
+        "hex": "#0A0A0A"
+      },
+      {
+        "name": "Navy",
+        "hex": "#1B2A4A"
+      }
     ],
     "fabric": "100% Mulberry Silk",
-    "careInstructions": ["Dry clean only", "Store on padded hanger", "Iron on low heat with silk setting", "Avoid direct sunlight"],
+    "careInstructions": [
+      "Dry clean only",
+      "Store on padded hanger",
+      "Iron on low heat with silk setting",
+      "Avoid direct sunlight"
+    ],
     "images": [
-      "https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?w=800&q=80",
-      "https://images.unsplash.com/photo-1581338834647-b0fb40996d21?w=800&q=80"
+      "/images/products/midnight-silk-abaya.jpg",
+      "/images/products/pearl-embellished-abaya.jpg"
     ],
     "featured": true,
     "bestSeller": true
@@ -28,16 +45,32 @@
     "originalPrice": 2200,
     "description": "Adorned with hand-sewn freshwater pearls cascading along the front panel, this abaya is the epitome of refined elegance. The premium crepe fabric ensures a structured yet comfortable fit, making it ideal for weddings and formal celebrations.",
     "category": "Bridal",
-    "sizes": ["S", "M", "L", "XL"],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
     "colors": [
-      { "name": "Ivory", "hex": "#FFF8F0" },
-      { "name": "Champagne", "hex": "#F7E7CE" }
+      {
+        "name": "Ivory",
+        "hex": "#FFF8F0"
+      },
+      {
+        "name": "Champagne",
+        "hex": "#F7E7CE"
+      }
     ],
     "fabric": "Premium Japanese Crepe",
-    "careInstructions": ["Professional dry clean only", "Store flat in garment bag", "Handle pearls with care", "Avoid contact with perfume"],
+    "careInstructions": [
+      "Professional dry clean only",
+      "Store flat in garment bag",
+      "Handle pearls with care",
+      "Avoid contact with perfume"
+    ],
     "images": [
-      "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d44?w=800&q=80",
-      "https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?w=800&q=80"
+      "/images/products/pearl-embellished-abaya.jpg",
+      "/images/products/midnight-silk-abaya.jpg"
     ],
     "featured": true,
     "newArrival": true
@@ -49,17 +82,38 @@
     "price": 750,
     "description": "Effortlessly chic for daily wear, this linen abaya offers breathable comfort in Qatar's warm climate. The relaxed A-line cut provides ease of movement, while the minimalist design speaks to understated sophistication.",
     "category": "Casual",
-    "sizes": ["XS", "S", "M", "L", "XL", "XXL"],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
     "colors": [
-      { "name": "Black", "hex": "#0A0A0A" },
-      { "name": "Taupe", "hex": "#483C32" },
-      { "name": "Sage", "hex": "#9CAF88" }
+      {
+        "name": "Black",
+        "hex": "#0A0A0A"
+      },
+      {
+        "name": "Taupe",
+        "hex": "#483C32"
+      },
+      {
+        "name": "Sage",
+        "hex": "#9CAF88"
+      }
     ],
     "fabric": "100% European Linen",
-    "careInstructions": ["Machine wash cold on gentle cycle", "Hang dry", "Iron while slightly damp", "Expect natural wrinkling"],
+    "careInstructions": [
+      "Machine wash cold on gentle cycle",
+      "Hang dry",
+      "Iron while slightly damp",
+      "Expect natural wrinkling"
+    ],
     "images": [
-      "https://images.unsplash.com/photo-1581338834647-b0fb40996d21?w=800&q=80",
-      "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d44?w=800&q=80"
+      "/images/products/everyday-linen-abaya.jpg",
+      "/images/products/minimalist-crepe-abaya.jpg"
     ],
     "bestSeller": true
   },
@@ -70,16 +124,32 @@
     "price": 1200,
     "description": "Inspired by the warm hues of a Doha sunset, this kimono-style abaya features wide sleeves with gold geometric embroidery. The open-front design allows versatile styling — wear it as an outer layer or belted at the waist.",
     "category": "Evening",
-    "sizes": ["S", "M", "L", "XL"],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
     "colors": [
-      { "name": "Black & Gold", "hex": "#0A0A0A" },
-      { "name": "Burgundy & Gold", "hex": "#722F37" }
+      {
+        "name": "Black & Gold",
+        "hex": "#0A0A0A"
+      },
+      {
+        "name": "Burgundy & Gold",
+        "hex": "#722F37"
+      }
     ],
     "fabric": "Silk-Blend Chiffon",
-    "careInstructions": ["Dry clean recommended", "Store on padded hanger", "Steam to remove wrinkles", "Keep away from sharp jewelry"],
+    "careInstructions": [
+      "Dry clean recommended",
+      "Store on padded hanger",
+      "Steam to remove wrinkles",
+      "Keep away from sharp jewelry"
+    ],
     "images": [
-      "https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?w=800&q=80",
-      "https://images.unsplash.com/photo-1581338834647-b0fb40996d21?w=800&q=80"
+      "/images/products/golden-hour-kimono-abaya.jpg",
+      "/images/products/desert-rose-abaya.jpg"
     ],
     "featured": true
   },
@@ -90,17 +160,38 @@
     "price": 890,
     "description": "The foundation of every modern wardrobe. This clean-lined crepe abaya is designed for the woman who values simplicity without compromise. Subtle princess seams create a flattering shape, while the matte crepe fabric resists wrinkles beautifully.",
     "category": "Casual",
-    "sizes": ["XS", "S", "M", "L", "XL", "XXL"],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
     "colors": [
-      { "name": "Black", "hex": "#0A0A0A" },
-      { "name": "Charcoal", "hex": "#36454F" },
-      { "name": "Deep Brown", "hex": "#3B2F2F" }
+      {
+        "name": "Black",
+        "hex": "#0A0A0A"
+      },
+      {
+        "name": "Charcoal",
+        "hex": "#36454F"
+      },
+      {
+        "name": "Deep Brown",
+        "hex": "#3B2F2F"
+      }
     ],
     "fabric": "Korean Nida Crepe",
-    "careInstructions": ["Machine wash cold", "Tumble dry low", "Iron on medium heat", "Can be steamed"],
+    "careInstructions": [
+      "Machine wash cold",
+      "Tumble dry low",
+      "Iron on medium heat",
+      "Can be steamed"
+    ],
     "images": [
-      "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d44?w=800&q=80",
-      "https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?w=800&q=80"
+      "/images/products/minimalist-crepe-abaya.jpg",
+      "/images/products/everyday-linen-abaya.jpg"
     ],
     "bestSeller": true
   },
@@ -111,15 +202,27 @@
     "price": 2100,
     "description": "A show-stopping piece featuring an intricate lattice pattern of Swarovski crystals across the bodice and sleeves. This haute couture abaya is designed for the most distinguished occasions, offering unparalleled glamour with modest grace.",
     "category": "Haute Couture",
-    "sizes": ["S", "M", "L"],
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
     "colors": [
-      { "name": "Black", "hex": "#0A0A0A" }
+      {
+        "name": "Black",
+        "hex": "#0A0A0A"
+      }
     ],
     "fabric": "Italian Stretch Crepe",
-    "careInstructions": ["Professional dry clean only", "Store in provided garment bag", "Avoid folding — hang only", "Handle crystal areas gently"],
+    "careInstructions": [
+      "Professional dry clean only",
+      "Store in provided garment bag",
+      "Avoid folding — hang only",
+      "Handle crystal areas gently"
+    ],
     "images": [
-      "https://images.unsplash.com/photo-1581338834647-b0fb40996d21?w=800&q=80",
-      "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d44?w=800&q=80"
+      "/images/products/crystal-lattice-abaya.jpg",
+      "/images/products/royal-velvet-abaya.jpg"
     ],
     "newArrival": true
   },
@@ -130,16 +233,33 @@
     "price": 1100,
     "description": "Celebrating the beauty of the Arabian desert, this abaya features a subtle rose-toned undertone with hand-embroidered floral motifs along the hemline. The lightweight fabric makes it ideal for transitional seasons.",
     "category": "Evening",
-    "sizes": ["XS", "S", "M", "L", "XL"],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
     "colors": [
-      { "name": "Dusty Rose", "hex": "#B76E79" },
-      { "name": "Black Rose", "hex": "#1A1A1A" }
+      {
+        "name": "Dusty Rose",
+        "hex": "#B76E79"
+      },
+      {
+        "name": "Black Rose",
+        "hex": "#1A1A1A"
+      }
     ],
     "fabric": "Chiffon with Satin Lining",
-    "careInstructions": ["Dry clean only", "Store on padded hanger", "Do not wring", "Iron on low heat"],
+    "careInstructions": [
+      "Dry clean only",
+      "Store on padded hanger",
+      "Do not wring",
+      "Iron on low heat"
+    ],
     "images": [
-      "https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?w=800&q=80",
-      "https://images.unsplash.com/photo-1581338834647-b0fb40996d21?w=800&q=80"
+      "/images/products/desert-rose-abaya.jpg",
+      "/images/products/golden-hour-kimono-abaya.jpg"
     ],
     "featured": true,
     "newArrival": true
@@ -151,17 +271,38 @@
     "price": 650,
     "description": "Your perfect travel companion. This wrinkle-resistant jersey abaya packs beautifully and maintains its shape throughout the day. The stretchy fabric provides ultimate comfort for long flights and busy travel days.",
     "category": "Casual",
-    "sizes": ["XS", "S", "M", "L", "XL", "XXL"],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
     "colors": [
-      { "name": "Black", "hex": "#0A0A0A" },
-      { "name": "Dark Grey", "hex": "#2C2C2C" },
-      { "name": "Navy", "hex": "#1B2A4A" }
+      {
+        "name": "Black",
+        "hex": "#0A0A0A"
+      },
+      {
+        "name": "Dark Grey",
+        "hex": "#2C2C2C"
+      },
+      {
+        "name": "Navy",
+        "hex": "#1B2A4A"
+      }
     ],
     "fabric": "Premium ITY Jersey",
-    "careInstructions": ["Machine wash cold", "Hang dry or tumble dry low", "No ironing needed", "Folds without creasing"],
+    "careInstructions": [
+      "Machine wash cold",
+      "Hang dry or tumble dry low",
+      "No ironing needed",
+      "Folds without creasing"
+    ],
     "images": [
-      "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d44?w=800&q=80",
-      "https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?w=800&q=80"
+      "/images/products/travel-friendly-jersey-abaya.jpg",
+      "/images/products/summer-breeze-abaya.jpg"
     ]
   },
   {
@@ -171,17 +312,36 @@
     "price": 1650,
     "description": "Crafted from sumptuous Italian velvet, this abaya exudes regal sophistication. The rich texture catches light beautifully, while the structured shoulders and tapered sleeves create a modern, polished silhouette.",
     "category": "Evening",
-    "sizes": ["S", "M", "L", "XL"],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
     "colors": [
-      { "name": "Black Velvet", "hex": "#0A0A0A" },
-      { "name": "Deep Emerald", "hex": "#004B49" },
-      { "name": "Midnight Blue", "hex": "#191970" }
+      {
+        "name": "Black Velvet",
+        "hex": "#0A0A0A"
+      },
+      {
+        "name": "Deep Emerald",
+        "hex": "#004B49"
+      },
+      {
+        "name": "Midnight Blue",
+        "hex": "#191970"
+      }
     ],
     "fabric": "Italian Stretch Velvet",
-    "careInstructions": ["Dry clean only", "Hang on velvet-friendly hanger", "Steam gently — do not press", "Store away from moisture"],
+    "careInstructions": [
+      "Dry clean only",
+      "Hang on velvet-friendly hanger",
+      "Steam gently — do not press",
+      "Store away from moisture"
+    ],
     "images": [
-      "https://images.unsplash.com/photo-1581338834647-b0fb40996d21?w=800&q=80",
-      "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d44?w=800&q=80"
+      "/images/products/royal-velvet-abaya.jpg",
+      "/images/products/crystal-lattice-abaya.jpg"
     ],
     "newArrival": true
   },
@@ -192,17 +352,37 @@
     "price": 820,
     "description": "Designed for the warmest days, this airy cotton-blend abaya features a relaxed butterfly cut that allows maximum airflow. The subtle texture adds visual interest while maintaining an effortlessly elegant look.",
     "category": "Casual",
-    "sizes": ["XS", "S", "M", "L", "XL"],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
     "colors": [
-      { "name": "White", "hex": "#FAFAFA" },
-      { "name": "Sand", "hex": "#C2B280" },
-      { "name": "Black", "hex": "#0A0A0A" }
+      {
+        "name": "White",
+        "hex": "#FAFAFA"
+      },
+      {
+        "name": "Sand",
+        "hex": "#C2B280"
+      },
+      {
+        "name": "Black",
+        "hex": "#0A0A0A"
+      }
     ],
     "fabric": "Cotton-Silk Blend",
-    "careInstructions": ["Machine wash cold on delicate", "Lay flat to dry", "Iron on medium heat", "Use mild detergent"],
+    "careInstructions": [
+      "Machine wash cold on delicate",
+      "Lay flat to dry",
+      "Iron on medium heat",
+      "Use mild detergent"
+    ],
     "images": [
-      "https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?w=800&q=80",
-      "https://images.unsplash.com/photo-1581338834647-b0fb40996d21?w=800&q=80"
+      "/images/products/summer-breeze-abaya.jpg",
+      "/images/products/travel-friendly-jersey-abaya.jpg"
     ]
   },
   {
@@ -212,16 +392,31 @@
     "price": 1350,
     "description": "A wearable work of art featuring hand-painted Arabic calligraphy along the back panel. Each piece is unique, with the calligraphy depicting verses celebrating beauty and grace. A true collector's piece for the discerning woman.",
     "category": "Haute Couture",
-    "sizes": ["S", "M", "L"],
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
     "colors": [
-      { "name": "Black & Gold", "hex": "#0A0A0A" },
-      { "name": "Black & Silver", "hex": "#0A0A0A" }
+      {
+        "name": "Black & Gold",
+        "hex": "#0A0A0A"
+      },
+      {
+        "name": "Black & Silver",
+        "hex": "#0A0A0A"
+      }
     ],
     "fabric": "Heavy Crepe with Satin Back",
-    "careInstructions": ["Professional dry clean only", "Do not iron directly on calligraphy", "Store flat in garment bag", "Handle with care — hand-painted"],
+    "careInstructions": [
+      "Professional dry clean only",
+      "Do not iron directly on calligraphy",
+      "Store flat in garment bag",
+      "Handle with care — hand-painted"
+    ],
     "images": [
-      "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d44?w=800&q=80",
-      "https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?w=800&q=80"
+      "/images/products/calligraphy-art-abaya.jpg",
+      "/images/products/modern-cape-abaya.jpg"
     ],
     "featured": true
   },
@@ -232,16 +427,33 @@
     "price": 1050,
     "description": "Redefining modern modest fashion, this cape-style abaya features an attached flowing cape that creates a dramatic yet graceful movement. The dual-layer design adds dimension while maintaining a streamlined silhouette underneath.",
     "category": "Evening",
-    "sizes": ["XS", "S", "M", "L", "XL"],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
     "colors": [
-      { "name": "Black", "hex": "#0A0A0A" },
-      { "name": "Deep Plum", "hex": "#3C1361" }
+      {
+        "name": "Black",
+        "hex": "#0A0A0A"
+      },
+      {
+        "name": "Deep Plum",
+        "hex": "#3C1361"
+      }
     ],
     "fabric": "Double Georgette",
-    "careInstructions": ["Dry clean only", "Hang on wide hanger to preserve cape shape", "Steam to refresh", "Avoid snagging cape layer"],
+    "careInstructions": [
+      "Dry clean only",
+      "Hang on wide hanger to preserve cape shape",
+      "Steam to refresh",
+      "Avoid snagging cape layer"
+    ],
     "images": [
-      "https://images.unsplash.com/photo-1581338834647-b0fb40996d21?w=800&q=80",
-      "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d44?w=800&q=80"
+      "/images/products/modern-cape-abaya.jpg",
+      "/images/products/calligraphy-art-abaya.jpg"
     ],
     "bestSeller": true
   }

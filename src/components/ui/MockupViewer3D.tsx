@@ -1,25 +1,32 @@
 'use client';
 
-import { useRef, useState, useCallback, useMemo, Suspense } from 'react';
-import { Canvas, useFrame, useLoader } from '@react-three/fiber';
-import { OrbitControls, Environment, Float, ContactShadows } from '@react-three/drei';
+import { useRef, useState, useCallback, useMemo, useEffect, Suspense } from 'react';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { Environment, Float, ContactShadows } from '@react-three/drei';
 import * as THREE from 'three';
 
 interface DressFormProps {
   textureUrl: string;
+  mousePos: React.MutableRefObject<{ x: number; y: number }>;
 }
 
-function DressForm({ textureUrl }: DressFormProps) {
+function DressForm({ textureUrl, mousePos }: DressFormProps) {
   const meshRef = useRef<THREE.Mesh>(null);
-  const texture = useLoader(THREE.TextureLoader, textureUrl);
+  const texture = useRef<THREE.Texture | null>(null);
+  const [textureLoaded, setTextureLoaded] = useState(false);
 
-  // Configure texture
-  useMemo(() => {
-    texture.wrapS = THREE.RepeatWrapping;
-    texture.wrapT = THREE.ClampToEdgeWrapping;
-    texture.repeat.set(1, 1);
-    texture.colorSpace = THREE.SRGBColorSpace;
-  }, [texture]);
+  // Load texture
+  useEffect(() => {
+    const loader = new THREE.TextureLoader();
+    loader.load(textureUrl, (loadedTexture) => {
+      loadedTexture.wrapS = THREE.RepeatWrapping;
+      loadedTexture.wrapT = THREE.ClampToEdgeWrapping;
+      loadedTexture.repeat.set(1, 1);
+      loadedTexture.colorSpace = THREE.SRGBColorSpace;
+      texture.current = loadedTexture;
+      setTextureLoaded(true);
+    });
+  }, [textureUrl]);
 
   // Create a dress form / mannequin silhouette using LatheGeometry
   const geometry = useMemo(() => {
@@ -68,11 +75,30 @@ function DressForm({ textureUrl }: DressFormProps) {
     return new THREE.LatheGeometry(points, 64);
   }, []);
 
+  // Smooth rotation following mouse position
+  const targetRotation = useRef({ x: 0, y: 0 });
+
+  useFrame(() => {
+    if (meshRef.current) {
+      // Map mouse position to rotation
+      // X: full 360 spin based on horizontal mouse position
+      targetRotation.current.y = mousePos.current.x * Math.PI * 1.2;
+      // Y: subtle tilt based on vertical mouse position
+      targetRotation.current.x = mousePos.current.y * 0.15;
+
+      // Smooth lerp for fluid motion
+      meshRef.current.rotation.y += (targetRotation.current.y - meshRef.current.rotation.y) * 0.05;
+      meshRef.current.rotation.x += (targetRotation.current.x - meshRef.current.rotation.x) * 0.05;
+    }
+  });
+
+  if (!textureLoaded) return null;
+
   return (
-    <Float speed={1.5} rotationIntensity={0.1} floatIntensity={0.3}>
+    <Float speed={1.5} rotationIntensity={0.05} floatIntensity={0.2}>
       <mesh ref={meshRef} geometry={geometry} castShadow>
         <meshPhysicalMaterial
-          map={texture}
+          map={texture.current}
           roughness={0.55}
           metalness={0.05}
           clearcoat={0.15}
@@ -151,7 +177,7 @@ function SpinningParticles() {
   );
 }
 
-function Scene({ textureUrl }: { textureUrl: string }) {
+function Scene({ textureUrl, mousePos }: { textureUrl: string; mousePos: React.MutableRefObject<{ x: number; y: number }> }) {
   return (
     <>
       <ambientLight intensity={0.4} />
@@ -164,7 +190,7 @@ function Scene({ textureUrl }: { textureUrl: string }) {
         penumbra={0.5}
         color="#C5A467"
       />
-      <DressForm textureUrl={textureUrl} />
+      <DressForm textureUrl={textureUrl} mousePos={mousePos} />
       <GoldBase />
       <SpinningParticles />
       <ContactShadows
@@ -175,14 +201,6 @@ function Scene({ textureUrl }: { textureUrl: string }) {
         far={4}
       />
       <Environment preset="studio" />
-      <OrbitControls
-        enableZoom={false}
-        enablePan={false}
-        autoRotate
-        autoRotateSpeed={2}
-        minPolarAngle={Math.PI / 4}
-        maxPolarAngle={Math.PI / 1.8}
-      />
     </>
   );
 }
@@ -203,13 +221,29 @@ interface MockupViewer3DProps {
 }
 
 export function MockupViewer3D({
-  defaultImage = 'https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?w=800&q=80',
+  defaultImage = '/images/hero-abaya.jpg',
   showUpload = true,
   className = '',
 }: MockupViewer3DProps) {
   const [textureUrl, setTextureUrl] = useState(defaultImage);
   const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const mousePos = useRef({ x: 0, y: 0 });
+
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    // Normalize to -1 to 1 range
+    mousePos.current.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+    mousePos.current.y = ((e.clientY - rect.top) / rect.height) * 2 - 1;
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    // Smoothly return to center when mouse leaves
+    mousePos.current.x = 0;
+    mousePos.current.y = 0;
+  }, []);
 
   const handleFileChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -241,9 +275,11 @@ export function MockupViewer3D({
   return (
     <div className={`relative ${className}`}>
       <div
-        className={`relative w-full h-full rounded-lg overflow-hidden transition-all duration-300 ${
-          isDragging ? 'ring-2 ring-gold ring-offset-2 ring-offset-deep-black' : ''
-        }`}
+        ref={containerRef}
+        className={`relative w-full h-full rounded-lg overflow-hidden transition-all duration-300 ${isDragging ? 'ring-2 ring-gold ring-offset-2 ring-offset-deep-black' : ''
+          }`}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
         onDrop={handleDrop}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
@@ -256,7 +292,7 @@ export function MockupViewer3D({
           style={{ background: 'transparent' }}
         >
           <Suspense fallback={<LoadingFallback />}>
-            <Scene textureUrl={textureUrl} />
+            <Scene textureUrl={textureUrl} mousePos={mousePos} />
           </Suspense>
         </Canvas>
 
@@ -291,6 +327,7 @@ export function MockupViewer3D({
             accept="image/*"
             onChange={handleFileChange}
             className="hidden"
+            aria-label="Upload abaya design image"
           />
         </div>
       )}
@@ -301,7 +338,7 @@ export function MockupViewer3D({
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zM12 2.25V4.5m5.834.166l-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243l-1.59-1.59" />
           </svg>
-          Drag to spin
+          Hover to explore
         </p>
       </div>
     </div>

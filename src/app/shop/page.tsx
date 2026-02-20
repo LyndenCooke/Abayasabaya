@@ -7,17 +7,8 @@ import allProducts from '@/data/products.json';
 import { Product } from '@/types';
 import { ProductCard } from '@/components/ui/ProductCard';
 import { QuickViewModal } from '@/components/ui/QuickViewModal';
+import { FilterSidebar, categories, priceRanges } from '@/components/ui/FilterSidebar';
 
-const categories = ['All', 'Casual', 'Evening', 'Bridal', 'Haute Couture'];
-const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
-const fabrics = ['All', 'Silk', 'Crepe', 'Linen', 'Chiffon', 'Jersey', 'Velvet', 'Cotton'];
-const priceRanges = [
-  { label: 'All Prices', min: 0, max: Infinity },
-  { label: 'Under QAR 800', min: 0, max: 800 },
-  { label: 'QAR 800 - 1,200', min: 800, max: 1200 },
-  { label: 'QAR 1,200 - 1,800', min: 1200, max: 1800 },
-  { label: 'Over QAR 1,800', min: 1800, max: Infinity },
-];
 const sortOptions = [
   { value: 'featured', label: 'Featured' },
   { value: 'newest', label: 'Newest' },
@@ -33,8 +24,8 @@ function ShopContent() {
   const [selectedCategory, setSelectedCategory] = useState(
     categoryParam
       ? categories.find(
-          (c) => c.toLowerCase().replace(/ /g, '-') === categoryParam
-        ) || 'All'
+        (c) => c.toLowerCase().replace(/ /g, '-') === categoryParam
+      ) || 'All'
       : 'All'
   );
   const [selectedSize, setSelectedSize] = useState('');
@@ -99,83 +90,18 @@ function ShopContent() {
     selectedFabric !== 'All' ||
     selectedPriceRange !== 0;
 
-  const FilterSidebar = ({ mobile = false }: { mobile?: boolean }) => (
-    <div className={mobile ? '' : 'sticky top-24'}>
-      <div className="mb-8">
-        <h3 className="text-xs tracking-widest uppercase font-medium mb-3">Category</h3>
-        <div className="space-y-2">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setSelectedCategory(cat)}
-              className={`block text-sm transition-colors ${
-                selectedCategory === cat ? 'text-gold font-medium' : 'text-charcoal/60 hover:text-deep-black'
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <div className="mb-8">
-        <h3 className="text-xs tracking-widest uppercase font-medium mb-3">Size</h3>
-        <div className="flex flex-wrap gap-2">
-          {sizes.map((size) => (
-            <button
-              key={size}
-              onClick={() => setSelectedSize(selectedSize === size ? '' : size)}
-              className={`min-w-[36px] px-2 py-1.5 text-xs border transition-all ${
-                selectedSize === size ? 'border-gold bg-gold text-white' : 'border-charcoal/20 hover:border-gold'
-              }`}
-            >
-              {size}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <div className="mb-8">
-        <h3 className="text-xs tracking-widest uppercase font-medium mb-3">Price Range</h3>
-        <div className="space-y-2">
-          {priceRanges.map((range, i) => (
-            <button
-              key={range.label}
-              onClick={() => setSelectedPriceRange(i)}
-              className={`block text-sm transition-colors ${
-                selectedPriceRange === i ? 'text-gold font-medium' : 'text-charcoal/60 hover:text-deep-black'
-              }`}
-            >
-              {range.label}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <div className="mb-8">
-        <h3 className="text-xs tracking-widest uppercase font-medium mb-3">Fabric Type</h3>
-        <div className="space-y-2">
-          {fabrics.map((fabric) => (
-            <button
-              key={fabric}
-              onClick={() => setSelectedFabric(fabric)}
-              className={`block text-sm transition-colors ${
-                selectedFabric === fabric ? 'text-gold font-medium' : 'text-charcoal/60 hover:text-deep-black'
-              }`}
-            >
-              {fabric}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {hasActiveFilters && (
-        <button onClick={clearFilters} className="text-xs tracking-widest uppercase text-rose-gold hover:text-deep-black transition-colors">
-          Clear All Filters
-        </button>
-      )}
-    </div>
-  );
+  const filterProps = {
+    selectedCategory,
+    setSelectedCategory,
+    selectedSize,
+    setSelectedSize,
+    selectedFabric,
+    setSelectedFabric,
+    selectedPriceRange,
+    setSelectedPriceRange,
+    hasActiveFilters,
+    clearFilters,
+  };
 
   return (
     <>
@@ -211,7 +137,7 @@ function ShopContent() {
 
         <div className="flex gap-12">
           <aside className="hidden lg:block w-56 shrink-0" aria-label="Product filters">
-            <FilterSidebar />
+            <FilterSidebar {...filterProps} />
           </aside>
 
           <div className="flex-1">
@@ -254,7 +180,7 @@ function ShopContent() {
                     </svg>
                   </button>
                 </div>
-                <FilterSidebar mobile />
+                <FilterSidebar mobile {...filterProps} />
               </div>
             </motion.div>
           </motion.div>

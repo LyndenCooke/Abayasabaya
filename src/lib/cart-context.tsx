@@ -1,7 +1,9 @@
 'use client';
 
-import { createContext, useContext, useState, useCallback, ReactNode } from 'react';
+import { createContext, useContext, useState, useCallback, useEffect, ReactNode } from 'react';
 import { CartItem, Product } from '@/types';
+
+const CART_STORAGE_KEY = 'abayasabaya-cart';
 
 interface CartContextType {
   items: CartItem[];
@@ -16,7 +18,29 @@ interface CartContextType {
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export function CartProvider({ children }: { children: ReactNode }) {
-  const [items, setItems] = useState<CartItem[]>([]);
+  // Lazy initializer reads from localStorage (SSR-safe)
+  const [items, setItems] = useState<CartItem[]>(() => {
+    if (typeof window === 'undefined') return [];
+    try {
+      const stored = localStorage.getItem(CART_STORAGE_KEY);
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (Array.isArray(parsed)) return parsed;
+      }
+    } catch {
+      // Ignore localStorage errors (private browsing, etc.)
+    }
+    return [];
+  });
+
+  // Persist cart to localStorage on change (updating external system is allowed)
+  useEffect(() => {
+    try {
+      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items));
+    } catch {
+      // Ignore localStorage errors
+    }
+  }, [items]);
 
   const addItem = useCallback((product: Product, size: string, color: string, quantity = 1) => {
     setItems(prev => {
@@ -71,3 +95,4 @@ export function useCart() {
   }
   return context;
 }
+
